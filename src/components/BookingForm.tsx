@@ -15,20 +15,42 @@ export default function BookingForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const totalGuests = formData.adults + formData.children;
     const templateParams = { ...formData, totalGuests };
 
     try {
+      // 1️⃣ Invia la mail con EmailJS
       await emailjs.send(
-        "service_fu3nzgf", // il tuo service ID
-        "template_33c1pje", // il tuo template ID
+        "service_fu3nzgf", // <-- Service ID
+        "template_33c1pje", // <-- Template ID
         templateParams,
-        "YOUR_PUBLIC_KEY"
+        "YOUR_PUBLIC_KEY" // <-- Public key
       );
+
+      // 2️⃣ Invia il messaggio WhatsApp via API Vercel
+      await fetch("/api/sendWhatsapp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          totalGuests,
+        }),
+      });
+
       alert("Prenotazione inviata con successo!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        adults: 1,
+        children: 0,
+        checkIn: "",
+        checkOut: "",
+      });
     } catch (err) {
       console.error(err);
-      alert("Errore durante l'invio della prenotazione");
+      alert("Errore durante l'invio della prenotazione.");
     }
   };
 
@@ -38,6 +60,7 @@ export default function BookingForm() {
         <input
           name="firstName"
           placeholder="Nome"
+          value={formData.firstName}
           onChange={(e) =>
             setFormData({ ...formData, firstName: e.target.value })
           }
@@ -47,6 +70,7 @@ export default function BookingForm() {
         <input
           name="lastName"
           placeholder="Cognome"
+          value={formData.lastName}
           onChange={(e) =>
             setFormData({ ...formData, lastName: e.target.value })
           }
@@ -59,6 +83,7 @@ export default function BookingForm() {
         name="email"
         type="email"
         placeholder="Email"
+        value={formData.email}
         onChange={(e) =>
           setFormData({ ...formData, email: e.target.value })
         }

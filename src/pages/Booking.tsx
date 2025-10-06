@@ -55,12 +55,16 @@ export default function Booking() {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
-          checkIn: formData.checkIn,
-          checkOut: formData.checkOut,
           adults: formData.adults,
           children: formData.children,
           totalGuests,
-          message: formData.message,
+          checkIn: formData.checkIn
+            ? new Date(formData.checkIn).toLocaleDateString("it-IT")
+            : "Non specificato",
+          checkOut: formData.checkOut
+            ? new Date(formData.checkOut).toLocaleDateString("it-IT")
+            : "Non specificato",
+          message: formData.message || "Nessun messaggio",
           year: new Date().getFullYear(),
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY

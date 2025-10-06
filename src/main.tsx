@@ -26,7 +26,9 @@ const router = createBrowserRouter(
   ],
   {
     // ✅ Qui la sintassi corretta: una sola riga dentro l'oggetto
-    basename: import.meta.env.DEV ? "/" : "/Progetto-B-BOrfeo/",
+    //basename: import.meta.env.DEV ? "/" : "/Progetto-B-BOrfeo/",
+    basename: "/",
+
   }
 );
 

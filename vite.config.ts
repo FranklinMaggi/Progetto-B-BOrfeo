@@ -1,11 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
 
-export default defineConfig(({ command }) => ({
+export default defineConfig({
   plugins: [react()],
-  // ✅ base dinamica: "/" in dev, "/Progetto-B-BOrfeo/" per Pages
-  base: command === 'build' ? '/Progetto-B-BOrfeo/' : '/',
+  base: '/', // ✅ su Vercel, il base deve essere "/"
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -14,4 +13,4 @@ export default defineConfig(({ command }) => ({
   build: {
     outDir: 'dist',
   },
-}))
+});
