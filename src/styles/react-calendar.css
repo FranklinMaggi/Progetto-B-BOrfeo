@@ -1,0 +1,127 @@
+.react-calendar {
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+}
+
+.react-calendar__tile--now {
+  background: #e0f7fa;
+  border-radius: 4px;
+}
+
+.react-calendar__tile--active {
+  background: #0077cc;
+  color: white;
+  border-radius: 4px;
+}
+
+.react-calendar__tile:disabled {
+  background: #f2f2f2;
+  color: #aaa;
+}
+/* Migliora la leggibilità generale */
+.react-calendar {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.react-calendar:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Header con mese/anno */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.react-calendar__navigation button {
+  color: #28527a;
+  font-weight: 600;
+  background: none;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  transition: background 0.2s;
+}
+
+.react-calendar__navigation button:hover {
+  background-color: rgba(40, 82, 122, 0.1);
+}
+
+/* Giorni della settimana */
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.25rem;
+}
+
+/* Celle dei giorni */
+.react-calendar__tile {
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 0.5rem 0;
+  transition: background-color 0.15s ease-in-out, color 0.15s;
+}
+
+.react-calendar__tile:hover {
+  background-color: #f4a26122;
+  color: #28527a;
+}
+
+/* Oggi */
+.react-calendar__tile--now {
+  background-color: #e0f7fa;
+  color: #28527a;
+  font-weight: 600;
+}
+
+/* Giorno selezionato */
+.react-calendar__tile--active {
+  background-color: #28527a;
+  color: white;
+  font-weight: 600;
+}
+
+/* Giorni disabilitati (prenotati) */
+.react-calendar__tile:disabled {
+  background-color: #f9d6d5 !important;
+  color: #a94442 !important;
+  text-decoration: line-through;
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* Range selezionato */
+.react-calendar__tile--range {
+  background-color: #f4a26144;
+  color: #28527a;
+  font-weight: 500;
+}
+.react-calendar__tile--rangeStart,
+.react-calendar__tile--rangeEnd {
+  background-color: #f4a261;
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsività */
+@media (max-width: 640px) {
+  .react-calendar {
+    font-size: 0.8rem;
+  }
+}

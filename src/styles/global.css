@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-background text-gray-800 font-sans;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif;
+}
+
+a {
+  @apply transition-colors duration-200;
+}
