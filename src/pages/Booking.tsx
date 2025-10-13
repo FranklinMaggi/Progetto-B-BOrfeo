@@ -48,15 +48,12 @@ export default function Booking() {
     setSent(false);
 
     try {
+      // 1️⃣ EmailJS - invia l'email
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          adults: formData.adults,
-          children: formData.children,
+          ...formData,
           totalGuests,
           checkIn: formData.checkIn
             ? new Date(formData.checkIn).toLocaleDateString("it-IT")
@@ -70,6 +67,22 @@ export default function Booking() {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
+      // 2️⃣ WhatsApp API via Vercel
+      const response = await fetch("/api/sendWhatsapp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          totalGuests,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        console.error("Errore WhatsApp:", data);
+      }
+
+      // Reset form e conferma
       setSent(true);
       setFormData({
         firstName: "",
@@ -82,7 +95,7 @@ export default function Booking() {
         message: "",
       });
     } catch (err) {
-      console.error(err);
+      console.error("Errore invio:", err);
       setError("Errore durante l'invio. Controlla la connessione e riprova.");
     } finally {
       setSending(false);
