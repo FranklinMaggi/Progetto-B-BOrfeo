@@ -1,3 +1,6 @@
+console.log("WHATSAPP_TOKEN:", token.slice(0, 8), "...");
+console.log("WHATSAPP_PHONE_ID:", phoneId);
+console.log("ADMIN_WHATSAPP:", admin);
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
