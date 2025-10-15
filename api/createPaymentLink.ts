@@ -1,11 +1,11 @@
 import Stripe from "stripe";
-import type {VercelRequest ,VercelResponse} from '@vercel/node'; 
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2023-10-16",
+  apiVersion: "2023-10-16", // Assicurati di avere stripe@11.x o superiore
 });
 
-export default async function handler(req: VercelRequest, res:VercelResponse) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") return res.status(405).end();
 
   const { amount, adminStripeId, description } = req.body;
@@ -35,7 +35,7 @@ export default async function handler(req: VercelRequest, res:VercelResponse) {
     });
 
     return res.status(200).json({ url: session.url });
-  } catch (e) {
+  } catch (e: any) {
     console.error(e);
     return res.status(500).json({ error: e.message });
   }

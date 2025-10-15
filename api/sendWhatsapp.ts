@@ -34,7 +34,7 @@ export default async function handler(req: any, res: any) {
       },
       body: JSON.stringify({
         messaging_product: 'whatsapp',
-        to: `+${ADMIN_NUMBER}`,
+        to: ADMIN_NUMBER,
         type: 'text',
         text: { body: text },
       }),
