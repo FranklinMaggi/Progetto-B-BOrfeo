@@ -1,6 +1,3 @@
-console.log("WHATSAPP_TOKEN:", token.slice(0, 8), "...");
-console.log("WHATSAPP_PHONE_ID:", phoneId);
-console.log("ADMIN_WHATSAPP:", admin);
 
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
@@ -14,7 +11,10 @@ export default async function handler(req: any, res: any) {
     const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN!;
     const PHONE_ID = process.env.WHATSAPP_PHONE_ID!; // ottenuto da Meta Developer
     const ADMIN_NUMBER = process.env.ADMIN_WHATSAPP!; // il tuo numero (es. "393271234567")
-
+    console.log("WHATSAPP_TOKEN:", token.slice(0, 8), "...");
+    console.log("WHATSAPP_PHONE_ID:", phoneId);
+    console.log("ADMIN_WHATSAPP:", admin);
+    
     // 📦 Messaggio di prenotazione
     const text = `
 📩 *Nuova prenotazione Orfeo Guest House!*
