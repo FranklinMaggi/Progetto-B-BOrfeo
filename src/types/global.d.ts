@@ -18,4 +18,13 @@ declare module "*.svg" {
     const content: string;
     export default content;
   }
+  interface ImportMetaEnv {
+    readonly WHATSAPP_TOKEN: string;
+    readonly WHATSAPP_PHONE_ID: string;
+    readonly ADMIN_WHATSAPP: string;
+  }
+  
+  interface ImportMeta {
+    readonly env: ImportMetaEnv;
+  }
   
