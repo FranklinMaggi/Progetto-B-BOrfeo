@@ -17,13 +17,15 @@
     "react": "^19.1.1",
     "react-calendar": "^6.0.0",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.3"
+    "react-router-dom": "^7.9.3",
+    "stripe": "^19.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
+    "@types/stripe": "^8.0.416",
     "@vercel/node": "^5.3.26",
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
