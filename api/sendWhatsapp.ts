@@ -8,10 +8,10 @@ export default async function handler(req: any, res: any) {
     const { firstName, lastName, email, adults, children, checkIn, checkOut, message } = req.body;
 
     // ✅ Dati da Meta Developer
-    const WHATSAPP_TOKEN = import.meta.env.WHATSAPP_TOKEN;
-    const PHONE_ID = import.meta.env.WHATSAPP_PHONE_ID;
-    const ADMIN_NUMBER = import.meta.env.ADMIN_WHATSAPP;
-     console.log("WHATSAPP_TOKEN:", WHATSAPP_TOKEN.slice(0, 8), "...");
+    const WHATSAPP_TOKEN = process.env.WHATSAPP_TOKEN!;
+    const PHONE_ID = process.env.WHATSAPP_PHONE_ID!; // ottenuto da Meta Developer
+    const ADMIN_NUMBER = process.env.ADMIN_WHATSAPP!; // il tuo numero (es. "393271234567")
+    console.log("WHATSAPP_TOKEN:", WHATSAPP_TOKEN.slice(0, 8), "...");
     console.log("WHATSAPP_PHONE_ID:", PHONE_ID);
     console.log("ADMIN_WHATSAPP:", ADMIN_NUMBER);
     
@@ -34,7 +34,7 @@ export default async function handler(req: any, res: any) {
       },
       body: JSON.stringify({
         messaging_product: 'whatsapp',
-        to: ADMIN_NUMBER,
+        to: `+${ADMIN_NUMBER}`,
         type: 'text',
         text: { body: text },
       }),
